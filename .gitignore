@@ -3,3 +3,11 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+.idea
+appsettings.json
+build/
+tools/
+nupkg/
+
+# Output folder used by Webpack or other FE stuff
+**/node_modules/*

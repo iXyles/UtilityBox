@@ -1,0 +1,34 @@
+{
+  "executable": "UtilityBox",
+  "splashscreen": {
+    "imageFile": ""
+  },
+  "name": "UtilityBox",
+  "author": "Marcus Strandner",
+  "singleInstance": false,
+  "build": {
+    "appId": "com.utilitybox.app",
+    "productName": "UtilityBox",
+    "copyright": "Copyright © 2020",
+    "buildVersion": "1.0.0",
+    "compression": "maximum",
+    "directories": {
+      "output": "../../../bin/Desktop"
+    },
+    "extraResources": [
+      {
+        "from": "./bin",
+        "to": "bin",
+        "filter": ["**/*"]
+      }
+    ],
+    "files": [
+      {
+        "from": "./ElectronHostHook/node_modules",
+        "to": "ElectronHostHook/node_modules",
+        "filter": ["**/*"]
+      },
+      "**/*"
+    ]
+  }
+}
