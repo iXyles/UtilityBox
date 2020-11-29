@@ -1,0 +1,23 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:21696",
+      "sslPort": 44331
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "App": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Marcus\\RiderProjects\\UtilityBox\\bin\\Debug\\net5.0-windows\\win-x64\\UtilityBox.App.exe",
+      "workingDirectory": "C:\\Users\\Marcus\\RiderProjects\\UtilityBox"
+    },
+    "App-Win7x64": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Marcus\\RiderProjects\\UtilityBox\\bin\\Debug\\net5.0-windows\\win7-x64\\UtilityBox.App.exe",
+      "workingDirectory": "C:\\Users\\Marcus\\RiderProjects\\UtilityBox"
+    }
+  }
+}
