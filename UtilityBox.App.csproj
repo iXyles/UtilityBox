@@ -14,11 +14,52 @@
         <None Include="wwwroot\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Remove="Publish\**" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="DotNetify.SignalR" Version="4.1.1" />
       <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.0" />
       <PackageReference Include="System.Management" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Publish\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Publish\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Publish\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="Publish\package-lock.json" />
+      <_ContentIncludedByDefault Remove="Publish\package.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\package-lock.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\package.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\package-lock.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\package.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\package-lock.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\package.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\package-lock.json" />
+      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\package.json" />
     </ItemGroup>
 </Project>

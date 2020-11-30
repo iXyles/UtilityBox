@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# S3010: Static fields should not be updated in constructors
+dotnet_diagnostic.S3010.severity = silent

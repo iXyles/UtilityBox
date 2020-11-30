@@ -12,7 +12,7 @@ namespace UtilityBox.App.Server.Services
         private readonly PowerShellService _shellService;
 
         // gotta manually initialize then because electron does not like "reflection"
-        private readonly List<IWindowsApp> _apps;
+        public List<IWindowsApp> Apps { get; }
         
         public WindowsAppService(PowerShellService shellService)
         {
@@ -26,18 +26,18 @@ namespace UtilityBox.App.Server.Services
                 .Where(t => t.IsClass);
 
             types.ForEach(t => list.Add((IWindowsApp) Activator.CreateInstance(t)));
-            _apps = list;
+            Apps = list;
         }
 
-        private async Task<bool> IsAppInstalled(IWindowsApp app) 
+        public async Task<bool> IsAppInstalled(IWindowsApp app) 
             => (await _shellService.RunScriptAsync(
                 new List<string>()
                 {
-                    "Import-Module -Name Appx -UseWIndowsPowershell",
+                    "Import-Module -Name Appx -UseWindowsPowerShell",
                     $"Get-AppxPackage *{app.Name}*"
                 })).IndexOf(app.Name, StringComparison.OrdinalIgnoreCase) >= 0;
 
-        private async Task UninstallApp(IWindowsApp app)
+        public async Task UninstallApp(IWindowsApp app)
             => await _shellService.RunScriptAsync(
                 new List<string>()
                 {
@@ -45,12 +45,10 @@ namespace UtilityBox.App.Server.Services
                     $"Get-AppxPackage *{app.Name}* | Remove-AppxPackage"
                 });
 
-        private Task InstallApp(IWindowsApp app) => throw new NotImplementedException();
-
         public async Task<List<AppState>> CheckInstalledApps()
         {
             var apps = new List<AppState>();
-            await _apps.ForEachAsync(async app =>
+            var tasks = Apps.Select(async app =>
             {
                 var installed = await IsAppInstalled(app);
                 apps.Add(new AppState
@@ -60,6 +58,7 @@ namespace UtilityBox.App.Server.Services
                     Installed = installed
                 });
             });
+            await Task.WhenAll(tasks);
             return apps;
         }
     }

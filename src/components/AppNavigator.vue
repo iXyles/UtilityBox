@@ -150,6 +150,12 @@ export default {
         icon: 'mdi-apps',
         to: '/installedapps',
         available: true
+      },
+      {
+        name: 'System Usage',
+        icon: 'mdi-chart-line',
+        to: '/systemusage',
+        available: true
       }
     ]
   })

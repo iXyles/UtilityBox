@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
@@ -17,6 +16,7 @@ namespace UtilityBox.App.Server.Services
             defaultSessionState.ExecutionPolicy = Microsoft.PowerShell.ExecutionPolicy.Unrestricted;
 
             _rsPool = RunspaceFactory.CreateRunspacePool(defaultSessionState);
+            _rsPool.SetMinRunspaces(1);
             _rsPool.ThreadOptions = PSThreadOptions.UseNewThread;
        
             // open the pool.
