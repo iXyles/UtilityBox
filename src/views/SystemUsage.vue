@@ -2,12 +2,20 @@
   <v-container fluid>
     
     <v-card elevation="2">
-      <v-card-title>System usage (2 seconds delay)</v-card-title>
-     <canvas v-vmOn="{CurrentCpuUsage: updateLineChart}"></canvas>
+      <v-card-title dense>System usage</v-card-title>
+      <v-list-item>
+        <canvas id="usageGraph"></canvas>
+      </v-list-item>
     </v-card>
 
   </v-container>
 </template>
+
+<style>
+#usageGraph {
+  overflow-y: visible;
+}
+</style>
 
 <script>
 import dotnetify from 'dotnetify/vue';
@@ -18,6 +26,9 @@ export default {
   name: 'SystemUsage',
   created() {
     this.vm = dotnetify.vue.connect("SystemUsage", this);
+  },
+  mounted() {
+    this.lineChart = this.createLineChart(document.getElementById("usageGraph"));
   },
   data() {
     return {
@@ -40,7 +51,8 @@ export default {
             borderColor: 'rgb(255, 99, 132)',
             fill: false,
             cubicInterpolationMode: 'monotone',
-            borderDash: [8, 4],
+            borderDash: [8, 0],
+            data: []
           },
           {
             label: 'Memory Usage %',
@@ -61,9 +73,10 @@ export default {
               {
                 type: 'realtime',
                 realtime: {
-                  duration: 20000,
+                  duration: 60000,
                   refresh: 1000,
-                  delay: 2000
+                  delay: 2000,
+                  onRefresh: this.onRefresh.bind(this)
                 }
               }
             ],
@@ -81,31 +94,26 @@ export default {
           hover: {
             mode: 'nearest',
             intersect: false
+          },
+          plugins: {
+            streaming: {
+              frameRate: 30
+            }
           }
         }
       };
-      const chartOptions = { responsive: true };
-      return new Chart(elem.getContext('2d'), chartData, chartOptions);
+      return new Chart(elem.getContext('2d'), chartData, {responsive: true, maintainAspectRatio: false});
     },
-    updateLineChart: function (element) {
-      if (!this.lineChart) {
-        this.lineChart = this.createLineChart(element);
-      } else {
-        this.onRefresh(this.lineChart, this.CurrentCpuUsage, this.CurrentMemoryUsage);
-      }
-    },
-    onRefresh(chart, cpu, memory) {
-      chart.config.data.datasets[0].data.push({
+    onRefresh: function() {
+      if (!this.lineChart) return;
+      this.lineChart.config.data.datasets[0].data.push({
         x: Date.now(),
-        y: cpu
+        y: this.CurrentCpuUsage
       });
-
-      chart.config.data.datasets[1].data.push({
+      this.lineChart.config.data.datasets[1].data.push({
         x: Date.now(),
-        y: memory
+        y: this.CurrentMemoryUsage
       });
-      
-      chart.update();
     }
   }
 }

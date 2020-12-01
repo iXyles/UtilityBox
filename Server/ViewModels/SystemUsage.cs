@@ -1,34 +1,60 @@
 ﻿using DotNetify;
 using System.Diagnostics;
-using System.Threading;
+using System.Management;
+using System.Timers;
 
 namespace UtilityBox.App.Server.ViewModels
 {
-    public class SystemUsage : BaseVM
+    public class SystemUsage : MulticastVM
     {
-        private readonly PerformanceCounter _cpuCounter;
-        private readonly PerformanceCounter _ramCounter;
-        private readonly Timer _timer;
+        private static Timer _timer;
+        private static PerformanceCounter _cpuCounter;
+        private static ManagementObjectSearcher _searcher;
 
-        public float CurrentCpuUsage {get; private set;}
+        public float CurrentCpuUsage { get; private set; }
         public float CurrentMemoryUsage { get; private set; }
 
         public SystemUsage()
         {
-            _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            _ramCounter = new PerformanceCounter("Memory", "Available MBytes");
+            _searcher ??= new ManagementObjectSearcher(new ObjectQuery($"SELECT * FROM Win32_OperatingSystem"));
+            
+            _cpuCounter ??= new PerformanceCounter("Processor", "% Processor Time", "_Total");
 
-            _timer = new Timer(state =>
+            if (_timer == null) 
             {
-                CurrentCpuUsage = _cpuCounter.NextValue();
-                CurrentMemoryUsage = _ramCounter.NextValue();
+                _timer = new Timer(1000);
+                _timer.Elapsed += (_, _) =>
+                {
+                    CurrentCpuUsage = _cpuCounter.NextValue();
+                    
+                    using var memoryLookup = _searcher.Get();
+                    var totalMemory = 0L;
+                    var totalUsage = 0L;
+                    foreach (var result in memoryLookup)
+                    {
+                        if (long.TryParse(result["TotalVisibleMemorySize"].ToString(), out var total) &&
+                            long.TryParse(result["FreePhysicalMemory"].ToString(), out var used))
+                        {
+                            totalMemory += total;
+                            totalUsage += used;
+                        }
+                    }
+                    CurrentMemoryUsage = ((float) totalUsage / totalMemory) * 100;
 
-                Changed(nameof(CurrentCpuUsage));
-                Changed(nameof(CurrentMemoryUsage));
-                PushUpdates();
-            }, null, 0, 1000);
+                    Changed(nameof(CurrentCpuUsage));
+                    Changed(nameof(CurrentMemoryUsage));
+                    PushUpdates();
+                };
+            }
+           
+            _timer.Start();
         }
-
-        public override void Dispose() => _timer.Dispose();
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (!disposing) return;
+            _timer.Dispose();
+            _timer = null;
+        }
     }
 }
