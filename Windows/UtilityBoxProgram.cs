@@ -42,12 +42,21 @@ namespace UtilityBox.App.Windows
                     }
                 }
             };
+            Application.ApplicationExit += this.OnApplicationExit;
             _notifyIcon.DoubleClick += OpenApplication;
             server.StartWebServer(address =>
             {
                 _serverAddress = address;
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {address}") {CreateNoWindow = true});
             });
+        }
+
+        private void OnApplicationExit(object? sender, EventArgs e)
+        {
+            try
+            {
+                _notifyIcon.Dispose();
+            } catch { /* ignored */}
         }
 
         private void OpenApplication(object sender, EventArgs e)
@@ -60,7 +69,10 @@ namespace UtilityBox.App.Windows
 
         private void ExitApplication(object sender, EventArgs e)
         {
-            _notifyIcon.Visible = false;
+            try
+            {
+                _notifyIcon.Dispose();
+            } catch { /* ignored */}
             Environment.Exit(1);
         }
     }
