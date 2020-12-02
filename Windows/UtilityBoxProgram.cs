@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using ServerApp = UtilityBox.App.Server.ServerApp;
 
@@ -8,12 +9,21 @@ namespace UtilityBox.App.Windows
 {
     static class UtilityBoxProgram
     {
+        private static string UtilityBoxApplicationGuid = "c47f2a513-7b91-4f89-841d-f935a6a5286a";
+        
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            using Mutex mutex = new Mutex(false, "Global\\" + UtilityBoxApplicationGuid);
+            if(!mutex.WaitOne(0, false))
+            {
+                MessageBox.Show("Instance already running, please close it if you are trying to restart it.");
+                return;
+            }
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -42,7 +52,7 @@ namespace UtilityBox.App.Windows
                     }
                 }
             };
-            Application.ApplicationExit += this.OnApplicationExit;
+            Application.ApplicationExit += OnApplicationExit;
             _notifyIcon.DoubleClick += OpenApplication;
             server.StartWebServer(address =>
             {
@@ -51,10 +61,13 @@ namespace UtilityBox.App.Windows
             });
         }
 
-        private void OnApplicationExit(object? sender, EventArgs e)
+        private void OnApplicationExit(object sender, EventArgs e)
         {
             try
             {
+                _notifyIcon.Icon.Dispose();
+                _notifyIcon.Icon = null;
+                _notifyIcon.Visible = false;
                 _notifyIcon.Dispose();
             } catch { /* ignored */}
         }
@@ -67,13 +80,6 @@ namespace UtilityBox.App.Windows
                 Process.Start(new ProcessStartInfo("cmd", $"/c start http://localhost:8080") {CreateNoWindow = true});
         }
 
-        private void ExitApplication(object sender, EventArgs e)
-        {
-            try
-            {
-                _notifyIcon.Dispose();
-            } catch { /* ignored */}
-            Environment.Exit(1);
-        }
+        private void ExitApplication(object sender, EventArgs e) => Environment.Exit(1);
     }
 }
