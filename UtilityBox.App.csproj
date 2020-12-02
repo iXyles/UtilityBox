@@ -34,32 +34,4 @@
     <ItemGroup>
       <Content Remove="Publish\**" />
     </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\web.config" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\web.config" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\web.config" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\web.config" />
-      <_ContentIncludedByDefault Remove="Publish\web.config" />
-      <_ContentIncludedByDefault Remove="Publish\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="Publish\appsettings.json" />
-      <_ContentIncludedByDefault Remove="Publish\package-lock.json" />
-      <_ContentIncludedByDefault Remove="Publish\package.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\appsettings.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\package-lock.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\package.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\appsettings.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\package-lock.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\package.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\appsettings.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\package-lock.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\package.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\appsettings.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\package-lock.json" />
-      <_ContentIncludedByDefault Remove="Publish\Publish\Publish\Publish\Publish\package.json" />
-    </ItemGroup>
 </Project>

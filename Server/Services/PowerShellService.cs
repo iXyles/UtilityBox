@@ -22,6 +22,9 @@ namespace UtilityBox.App.Server.Services
             // open the pool.
             _rsPool.Open();
         }
+
+        public async Task<string> RunScriptAsync(string script)
+            => await RunScriptAsync(new List<string>{ script });
         
         public async Task<string> RunScriptAsync(List<string> scripts)
         {

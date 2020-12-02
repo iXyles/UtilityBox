@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UtilityBox.Runner.Extensions
+namespace UtilityBox.App.Server.Extensions
 {
-    public static class EnumerableExtensions
+    public static class EnumerableExtension
     {
         public static void ForEach<T>(this T[] array, Action<T> action)
         {

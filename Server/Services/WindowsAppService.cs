@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UtilityBox.App.Server.Extensions;
 using UtilityBox.App.Server.Models;
-using UtilityBox.Runner.Extensions;
 
 namespace UtilityBox.App.Server.Services
 {
@@ -41,7 +41,7 @@ namespace UtilityBox.App.Server.Services
             => await _shellService.RunScriptAsync(
                 new List<string>()
                 {
-                    "Import-Module -Name Appx -UseWIndowsPowershell",
+                    "Import-Module -Name Appx -UseWindowsPowerShell",
                     $"Get-AppxPackage *{app.Name}* | Remove-AppxPackage"
                 });
 

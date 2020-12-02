@@ -40,6 +40,7 @@ namespace UtilityBox.App.Server
             // Services
             services.AddSingleton<PowerShellService>();
             services.AddSingleton<WindowsAppService>();
+            services.AddSingleton<UpdateRegistryService>();
             
             services.AddMemoryCache();
             services.AddSignalR();

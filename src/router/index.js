@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import InstalledApps from '../views/InstalledApps.vue';
-import SystemUsage from '../views/SystemUsage.vue';
+import Home from '@/views/Home.vue';
+import About from '@/views/About.vue';
+import InstalledApps from '@/views/InstalledApps.vue';
+import SystemUsage from '@/views/SystemUsage.vue';
+import WindowsToggles from '@/views/WindowsToggles.vue'
 
 Vue.use(VueRouter);
 
@@ -19,11 +20,15 @@ const routes = [
     component: About
   },
   {
+    path: '/windowstoggles',
+    name: 'WindowsToggles',
+    component: WindowsToggles
+  },
+  {
     path: '/installedapps',
     name: 'InstalledApps',
     component: InstalledApps
-  }
-  ,
+  },
   {
     path: '/systemusage',
     name: 'SystemUsage',

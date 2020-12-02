@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
-    <v-data-table v-if="InstalledWindowsApps.length > 0"
+    <v-data-table v-if="RegistryToggles.length > 0"
       :headers="headers"
-      :items="InstalledWindowsApps"
+      :items="RegistryToggles"
       :search="search"
       item-key="name"
       class="elevation-1"
@@ -11,7 +11,7 @@
         <v-toolbar
           flat
         >
-          <v-toolbar-title>Installed Apps</v-toolbar-title>
+          <v-toolbar-title>Windows Toggles</v-toolbar-title>
           <v-divider
             class="mx-4"
             inset
@@ -20,7 +20,6 @@
           <v-btn
             color="blue darken-1"
             @click="refresh"
-            :loading="InProgress"
           >
             Refresh
           </v-btn>
@@ -39,14 +38,22 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
-        <v-icon v-if="item.Installed"
-          small
-          @click="editItem(item)"
+        <v-icon
+          v-if="item.Active"
+          @click="toggle(item)"
         >
-          mdi-wrench
+          mdi-toggle-switch-off
+        </v-icon>
+        <v-icon 
+          v-else
+          @click="toggle(item)"
+        >
+          mdi-toggle-switch
         </v-icon>
       </template>
     </v-data-table>
@@ -61,7 +68,7 @@
             class="subtitle-1 text-center"
             cols="12"
           >
-            Getting installed apps...
+            Getting available windows toggles...
           </v-col>
           <v-col cols="6">
             <v-progress-linear
@@ -74,27 +81,6 @@
         </v-row>
       </v-container>
     </v-card>
-
-    <v-dialog v-model="isInstalled" max-width="600px" :persistent="InProgress">
-      <v-card>
-        <v-card-title class="headline">Do you want to uninstall {{ currentDialogItem.Name }}?</v-card-title>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-
-            <v-btn
-              color="blue darken-1"
-              block
-              @click="uninstall"
-              :loading="InProgress"
-            >
-              Uninstall
-            </v-btn>
-
-          <v-spacer></v-spacer>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
   </v-container>
 </template>
 
@@ -102,54 +88,38 @@
 import dotnetify from 'dotnetify/vue';
 
 export default {
-  name: 'InstalledApps',
+  name: 'WindowsToggles',
   created() {
-    this.vm = dotnetify.vue.connect("InstalledApps", this);
+    this.vm = dotnetify.vue.connect("WindowsToggles", this);
   },
   data() {
     return {
       search: '',
-      currentDialogId: -1,
-      currentDialogItem: {},
-      InstalledWindowsApps: [],
-      InProgress: false
+      RegistryToggles: []
     }
   },
   destroyed() {
     this.vm.$destroy();
   },
   methods: {
-    editItem(item) {
-      this.currentDialogId = this.InstalledWindowsApps.indexOf(item);
-      this.currentDialogItem = item;
-    },
-    uninstall() {
+    toggle(item) {
       this.vm.$dispatch({
-        UninstallApp: this.currentDialogItem.Name
+        Toggle: item.Name
       });
     },
     refresh(){
-      this.vm.$dispatch({RefreshApps:null});
+      this.vm.$dispatch({RefreshRegistryKeys:null});
     }
   },
   computed: {
     headers () {
       return [
         { text: 'Name', value: 'Name' },
-        { text: 'Description', value: 'Desc' },
-        { text: 'Installed', value: 'Installed' },
+        { text: 'Description', value: 'Description', sortable: false },
+        { text: 'Information', value: 'Message', sortable: false },
+        { text: 'Checked', value: 'Active', sortable: false },
         { text: 'Action', value: 'actions', sortable: false },
       ]
-    },
-    isInstalled: {
-      get() {
-        if (!this.currentDialogItem.Name) return false;
-        return this.InstalledWindowsApps[this.currentDialogId].Installed;
-      },
-      set() {
-        this.currentDialogItem = {};
-        this.currentDialogId = 0;
-      }
     }
   }
 }

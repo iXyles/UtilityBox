@@ -140,9 +140,9 @@ export default {
         available: true
       },
       {
-        name: 'About',
-        icon: 'mdi-information-outline',
-        to: '/about',
+        name: 'Windows Toggles',
+        icon: 'mdi-toggle-switch',
+        to: '/windowstoggles',
         available: true
       },
       {
@@ -155,6 +155,12 @@ export default {
         name: 'System Usage',
         icon: 'mdi-chart-line',
         to: '/systemusage',
+        available: true
+      },
+      {
+        name: 'About',
+        icon: 'mdi-information-outline',
+        to: '/about',
         available: true
       }
     ]
