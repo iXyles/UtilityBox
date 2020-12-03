@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Welcome to UtilityBox Application
 
-You can use the [editor on GitHub](https://github.com/iXyles/UtilityBox/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### What is UtilityBox?
+UtilityBox is a follow-up by my previously abandon project known as "AutoFixer" which was a tool to simplify the process of a newly installed Windows 10 computer.
+The idea behind the tool was to have a simple single program for myself to configure a newly installed Windows PC with some basics configurations; mainly due to so many issues in the early versions of Windows 10.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### So what makes UtilityBox different from AutoFixer?
+The main difference is that the application now is just a .NET Core server running on the host, but are fully accessible through a web interface instead of the previous windows form. The idea for this is to have a better UI, but also make it possible to add more "nice to have" functionality - for example, if you ever wish to control or check something from a different pc / phone. Because of this, I might at some point also in some sort of authentication, but anyone who can directly access the web interface will be able to control the UI of this tool (so tip is to not make the port public to your network)
 
-### Markdown
+### What are the requirements to run UtilityBox?
+Well... to make UtilityBox download as lightweight as possible, you will be forced to install ".NET 5 SDK" by yourself through here: https://dotnet.microsoft.com/download/dotnet/5.0 - And also remember this tool is built to ONLY built to support Windows!
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### I have an issue / I found a bug!
+Make an issue on the repo with the problem or issue you are experiencing. I will go through the report as soon as possible.
 
-```markdown
-Syntax highlighted code block
+### I want to suggest an idea!
+Oh? Nice! Let me know by creating an issue on the GitHub repo, and I will try to respond to the suggestions by the time I have.
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/iXyles/UtilityBox/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Notes
+UtilityBox does not come with a built-in updater, which requires you to download the latest updates manually from the rep; by going to the "Release" tab and download the latest installer or standalone executable of your choice.
