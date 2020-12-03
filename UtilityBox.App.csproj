@@ -8,30 +8,26 @@
         <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
         <PublishSingleFile>true</PublishSingleFile>
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+        <SignAssembly>false</SignAssembly>
+        <AssemblyOriginatorKeyFile />
+        <Authors>Marcus Strandner</Authors>
+        <PackageIcon>icon.ico</PackageIcon>
+        <Version>0.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="wwwroot\**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Remove="Publish\**" />
+      <None Include="wwwroot\**">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Remove="Publish\**" />
+      <None Update="icon.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="DotNetify.SignalR" Version="4.1.1" />
       <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.0" />
       <PackageReference Include="System.Management" Version="5.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="Publish\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Publish\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Publish\**" />
     </ItemGroup>
 </Project>

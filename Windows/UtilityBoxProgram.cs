@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using ServerApp = UtilityBox.App.Server.ServerApp;
@@ -39,10 +40,14 @@ namespace UtilityBox.App.Windows
         public UtilityBoxApplication()
         {
             var server = new ServerApp();
+
+            using var stream = File.OpenRead($"{AppContext.BaseDirectory}/icon.ico");
+            var icon = new Icon(stream);
+
             _notifyIcon = new NotifyIcon
             {
                 Visible = true,
-                Icon = SystemIcons.Shield,
+                Icon = icon,
                 ContextMenuStrip  = new ContextMenuStrip()
                 {
                     Items =
