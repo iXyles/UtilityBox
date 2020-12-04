@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace UtilityBox.App.Server.Models.WindowsToggles
+namespace UtilityBox.App.Server.Models.RegistryToggles
 {
     public class AutoUpdate : IRegistryToggle
     {

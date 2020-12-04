@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using UtilityBox.App.Server.Extensions;
 
-namespace UtilityBox.App.Server.Models.WindowsToggles
+namespace UtilityBox.App.Server.Models.RegistryToggles
 {
     public class VolumeMixer : IRegistryToggle
     {
