@@ -82,7 +82,7 @@ namespace UtilityBox.App.Windows
             if (string.IsNullOrEmpty(_serverAddress))
                 MessageBox.Show("System is not ready... Please wait.");
             else
-                Process.Start(new ProcessStartInfo("cmd", $"/c start http://localhost:8080") {CreateNoWindow = true});
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {_serverAddress}") {CreateNoWindow = true});
         }
 
         private void ExitApplication(object sender, EventArgs e) => Environment.Exit(1);
