@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
-    <v-data-table v-if="RegistryToggles.length > 0"
+    <v-data-table v-if="Toggles.length > 0"
       :headers="headers"
-      :items="RegistryToggles"
+      :items="Toggles"
       :search="search"
       item-key="name"
       class="elevation-1"
@@ -11,7 +11,7 @@
         <v-toolbar
           flat
         >
-          <v-toolbar-title>Windows Toggles</v-toolbar-title>
+          <v-toolbar-title>Registry Toggles</v-toolbar-title>
           <v-divider
             class="mx-4"
             inset
@@ -68,7 +68,7 @@
             class="subtitle-1 text-center"
             cols="12"
           >
-            Getting available windows toggles...
+            Getting available registry toggles...
           </v-col>
           <v-col cols="6">
             <v-progress-linear
@@ -88,14 +88,14 @@
 import dotnetify from 'dotnetify/vue';
 
 export default {
-  name: 'WindowsToggles',
+  name: 'RegistryToggles',
   created() {
-    this.vm = dotnetify.vue.connect("WindowsToggles", this);
+    this.vm = dotnetify.vue.connect("RegistryToggles", this);
   },
   data() {
     return {
       search: '',
-      RegistryToggles: []
+      Toggles: []
     }
   },
   destroyed() {

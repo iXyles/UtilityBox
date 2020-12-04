@@ -18,6 +18,14 @@
         dense
         nav
       >
+
+       <v-list-item :href="item.href" v-if="!item.children && item.href">
+          <v-list-item-icon v-if="item.icon">
+            <v-icon>{{item.icon}}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-title>{{item.name}}</v-list-item-title>
+        </v-list-item>
         
         <v-list-item :to="item.to" v-if="!item.children && item.to">
           <v-list-item-icon v-if="item.icon">
@@ -140,9 +148,9 @@ export default {
         available: true
       },
       {
-        name: 'Windows Toggles',
+        name: 'Registry Toggles',
         icon: 'mdi-toggle-switch',
-        to: '/windowstoggles',
+        to: '/registrytoggles',
         available: true
       },
       {
@@ -160,7 +168,7 @@ export default {
       {
         name: 'About',
         icon: 'mdi-information-outline',
-        to: '/about',
+        href: 'https://ixyles.github.io/UtilityBox/',
         available: true
       }
     ]
