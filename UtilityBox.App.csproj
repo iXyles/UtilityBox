@@ -13,6 +13,7 @@
         <Authors>Marcus Strandner</Authors>
         <PackageIcon>icon.ico</PackageIcon>
         <Version>0.1.0</Version>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
 
     <ItemGroup>

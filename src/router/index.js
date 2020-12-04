@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import InstalledApps from '@/views/InstalledApps.vue';
 import SystemUsage from '@/views/SystemUsage.vue';
 import RegistryToggles from '@/views/RegistryToggles.vue'
+import ServiceToggles from '@/views/ServiceToggles.vue'
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/registrytoggles',
     name: 'RegistryToggles',
     component: RegistryToggles
+  },
+  {
+    path: '/servicetoggles',
+    name: 'ServiceToggles',
+    component: ServiceToggles
   },
   {
     path: '/installedapps',

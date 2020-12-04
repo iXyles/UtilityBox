@@ -154,6 +154,12 @@ export default {
         available: true
       },
       {
+        name: 'Service Toggles',
+        icon: 'mdi-toolbox',
+        to: '/servicetoggles',
+        available: true
+      },
+      {
         name: 'Installed Apps',
         icon: 'mdi-apps',
         to: '/installedapps',
