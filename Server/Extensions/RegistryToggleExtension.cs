@@ -25,7 +25,6 @@ namespace UtilityBox.App.Server.Extensions
                 return toggle.CheckedValue.HasValue
                     ? value == toggle.CheckedValue.Value.ToString()
                     : string.IsNullOrEmpty(value);
-                
             } catch { /* ignored */ }
             return false;
         }

@@ -13,6 +13,7 @@ namespace UtilityBox.App.Server
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup(_ => new StartupApp(action));
+                    webBuilder.UseUrls("http://localhost:47220", "https://localhost:47221", "http://*:47220", "https://*:47221");
                 });
     }
 }

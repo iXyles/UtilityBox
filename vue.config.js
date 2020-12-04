@@ -5,7 +5,7 @@
     devServer: {
         proxy: {
             '/dotnetify': {
-                target: 'http://localhost:5000'
+                target: 'http://localhost:47220'
             }
         }
     }
