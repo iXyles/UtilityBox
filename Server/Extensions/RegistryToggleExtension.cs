@@ -17,14 +17,12 @@ namespace UtilityBox.App.Server.Extensions
                 var match = pattern.Match(result);
                 var value = match.Groups.Count > 0 ? match.Groups["value"].Value : string.Empty;
                 
-                if (string.IsNullOrEmpty(result) && !toggle.CheckedValue.HasValue)
+                if (string.IsNullOrEmpty(value) && !toggle.CheckedValue.HasValue)
                     return true;
-                if (string.IsNullOrEmpty(result) && !toggle.UncheckedValue.HasValue)
+                if (string.IsNullOrEmpty(value) && !toggle.UncheckedValue.HasValue)
                     return false;
                 
-                return toggle.CheckedValue.HasValue
-                    ? value == toggle.CheckedValue.Value.ToString()
-                    : string.IsNullOrEmpty(value);
+                return toggle.CheckedValue.Value.ToString() == value;
             } catch { /* ignored */ }
             return false;
         }

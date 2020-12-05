@@ -16,8 +16,7 @@ namespace UtilityBox.App.Server.ViewModels
 
         public SystemUsage()
         {
-            _searcher ??= new ManagementObjectSearcher(new ObjectQuery($"SELECT * FROM Win32_OperatingSystem"));
-            
+            _searcher ??= new ManagementObjectSearcher(new ObjectQuery("SELECT * FROM Win32_OperatingSystem"));
             _cpuCounter ??= new PerformanceCounter("Processor", "% Processor Time", "_Total");
 
             if (_timer == null) 

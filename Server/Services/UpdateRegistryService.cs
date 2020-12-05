@@ -48,13 +48,13 @@ namespace UtilityBox.App.Server.Services
             }
         }
 
-        private async Task RemoveRegistryKey(IRegistryToggle toggle)
+        public async Task RemoveRegistryKey(IRegistryToggle toggle)
         {
             var query = $"Remove-ItemProperty -Path \"{toggle.RegistryEntry}{toggle.RegistryPath}\" -Name \"{toggle.Key}\"";
             await _powerShellService.RunScriptAsync(query);
         }
 
-        private async Task UpdateRegistryKey(IRegistryToggle toggle, int? value)
+        public async Task UpdateRegistryKey(IRegistryToggle toggle, int? value)
         {
             if (!value.HasValue)
                 return;
