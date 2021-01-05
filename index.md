@@ -18,3 +18,6 @@ Oh? Nice! Let me know by creating an issue on the GitHub repo, and I will try to
 
 ### Notes
 UtilityBox does not come with a built-in updater, which requires you to download the latest updates manually from the rep; by going to the "Release" tab and download the latest installer or standalone executable of your choice.
+
+### Looking for the old version of the "UtilityBox" program?
+I am no longer supporting the old version of the tool, but if you really want it you can download it here: https://github.com/iXyles/UtilityBox/releases/tag/Old 
