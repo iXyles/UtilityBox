@@ -5,10 +5,10 @@ UtilityBox is a follow-up by my previously abandon project known as "AutoFixer" 
 The idea behind the tool was to have a simple single program for myself to configure a newly installed Windows PC with some basics configurations; mainly due to so many issues in the early versions of Windows 10.
 
 ### So what makes UtilityBox different from AutoFixer?
-The main difference is that the application now is just a .NET Core server running on the host, but are fully accessible through a web interface instead of the previous windows form. The idea for this is to have a better UI, but also make it possible to add more "nice to have" functionality - for example, if you ever wish to control or check something from a different pc / phone. Because of this, I might at some point also in some sort of authentication, but anyone who can directly access the web interface will be able to control the UI of this tool (so tip is to not make the port public to your network)
+The main difference is that the application now is just a .NET Core server running on the host, but are fully accessible through a web interface instead of the previous windows form. The idea for this is to have a better UI, but also make it possible to add more "nice to have" functionality - for example, if you ever wish to control or check something from a different pc / phone. Because of this, I might at some point add support for authentication, but for now anyone who can directly access the web interface will be able to control the UI of this tool (so tip is to not make the port public to your network)
 
 ### What are the requirements to run UtilityBox?
-Well... to make UtilityBox download as lightweight as possible, you will be forced to install ".NET 5 SDK" by yourself through here: https://dotnet.microsoft.com/download/dotnet/5.0 - And also remember this tool is built to ONLY built to support Windows!
+Well... to make UtilityBox download as lightweight as possible, you will be forced to install ".NET 5 SDK" by yourself through here: https://dotnet.microsoft.com/download/dotnet/5.0 - And also remember this tool is built to ONLY support Windows!
 
 ### I have an issue / I found a bug!
 Make an issue on the repo with the problem or issue you are experiencing. I will go through the report as soon as possible.
