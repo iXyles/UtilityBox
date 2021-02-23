@@ -19,7 +19,7 @@ namespace UtilityBox.App.Windows
         static void Main()
         {
             using Mutex mutex = new Mutex(false, "Global\\" + UtilityBoxApplicationGuid);
-            if(!mutex.WaitOne(0, false))
+            if (!mutex.WaitOne(0, false))
             {
                 MessageBox.Show("Instance already running, please close it if you are trying to restart it.");
                 return;
@@ -48,7 +48,7 @@ namespace UtilityBox.App.Windows
             {
                 Visible = true,
                 Icon = icon,
-                ContextMenuStrip  = new ContextMenuStrip()
+                ContextMenuStrip  = new ContextMenuStrip
                 {
                     Items =
                     {
@@ -62,7 +62,7 @@ namespace UtilityBox.App.Windows
             server.StartWebServer(address =>
             {
                 _serverAddress = address;
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {address}") {CreateNoWindow = true});
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {address}") { CreateNoWindow = true });
             });
         }
 
@@ -82,7 +82,7 @@ namespace UtilityBox.App.Windows
             if (string.IsNullOrEmpty(_serverAddress))
                 MessageBox.Show("System is not ready... Please wait.");
             else
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {_serverAddress}") {CreateNoWindow = true});
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {_serverAddress}") { CreateNoWindow = true });
         }
 
         private void ExitApplication(object sender, EventArgs e) => Environment.Exit(1);

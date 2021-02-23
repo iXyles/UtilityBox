@@ -12,8 +12,13 @@
         <AssemblyOriginatorKeyFile />
         <Authors>Marcus Strandner</Authors>
         <PackageIcon>icon.ico</PackageIcon>
-        <Version>0.1.1</Version>
+        <Version>0.1.2</Version>
         <ApplicationManifest>app.manifest</ApplicationManifest>
+        <PackageVersion>0.1.2</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugSymbols>false</DebugSymbols>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,7 +33,7 @@
 
     <ItemGroup>
       <PackageReference Include="DotNetify.SignalR" Version="4.1.1" />
-      <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.0" />
+      <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.2" />
       <PackageReference Include="System.Management" Version="5.0.0" />
     </ItemGroup>
 </Project>

@@ -1,4 +1,6 @@
 using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -6,7 +8,22 @@ namespace UtilityBox.App.Server
 {
     public class ServerApp
     {
-        public void StartWebServer(Action<string> action) => CreateHostBuilder(action).Build().RunAsync();
+        public async Task StartWebServer(Action<string> action)
+        {
+            try
+            {
+                await CreateHostBuilder(action).Build().RunAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error", 
+                    $"{ex.Message}\n{ex.StackTrace}", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                    );
+            }
+        }
 
         private IHostBuilder CreateHostBuilder(Action<string> action) =>
             Host.CreateDefaultBuilder()
