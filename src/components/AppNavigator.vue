@@ -112,7 +112,7 @@ export default {
   methods: {
     toogleDarkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      //ElectronStore.set("darkMode", this.$vuetify.theme.dark);
+      localStorage.setItem("darkMode", this.$vuetify.theme.dark.toString());
     },
     isAvailable(item) {
       return !(isFunction(item.available) && !this.mapFunctionCall(item.available()) || !item.available);

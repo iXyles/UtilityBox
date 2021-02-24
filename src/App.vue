@@ -47,8 +47,8 @@ export default {
     AppNavigator
   },
   mounted() {
-    //const theme = ElectronStore.get('darkMode');
-    this.$vuetify.theme.dark = true;
+    const theme = localStorage.getItem('darkMode');
+    this.$vuetify.theme.dark = theme && theme === 'false' ? false : true;
   },
   methods: {
     exit() {

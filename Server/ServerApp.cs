@@ -17,8 +17,8 @@ namespace UtilityBox.App.Server
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error", 
-                    $"{ex.Message}\n{ex.StackTrace}", 
+                    $"{ex.Message}\n{ex.StackTrace}",
+                    "Error",
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error
                     );
@@ -30,7 +30,7 @@ namespace UtilityBox.App.Server
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup(_ => new StartupApp(action));
-                    webBuilder.UseUrls("http://localhost:47220", "https://localhost:47221", "http://*:47220", "https://*:47221");
+                    webBuilder.UseUrls("http://localhost:47220", "http://*:47220");
                 });
     }
 }
