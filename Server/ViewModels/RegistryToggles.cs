@@ -28,6 +28,7 @@ namespace UtilityBox.App.Server.ViewModels
             {
                 var type = typeof(IRegistryToggle);
                 var types = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(a => a.FullName != null && a.FullName.ToLower().Contains("utilitybox"))
                     .SelectMany(s => s.GetTypes())
                     .Where(p => type.IsAssignableFrom(p))
                     .Where(t => t.IsClass);

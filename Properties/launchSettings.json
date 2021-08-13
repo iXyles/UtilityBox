@@ -11,8 +11,7 @@
   "profiles": {
     "App": {
       "commandName": "Executable",
-      "executablePath": "UtilityBox.App.exe",
-      "workingDirectory": "."
+      "executablePath": "$(ProjectDir)$(OutDir)UtilityBox.App.exe"
     }
   }
 }

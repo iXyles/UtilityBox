@@ -48,23 +48,23 @@ namespace UtilityBox.App.Server.Services
             }
         }
 
-        public async Task RemoveRegistryKey(IRegistryToggle toggle)
+        public Task RemoveRegistryKey(IRegistryToggle toggle)
         {
             var query = $"Remove-ItemProperty -Path \"{toggle.RegistryEntry}{toggle.RegistryPath}\" -Name \"{toggle.Key}\"";
-            await _powerShellService.RunScriptAsync(query);
+            return _powerShellService.RunScriptAsync(query);
         }
 
-        public async Task UpdateRegistryKey(IRegistryToggle toggle, int? value)
+        public Task UpdateRegistryKey(IRegistryToggle toggle, int? value)
         {
             if (!value.HasValue)
-                return;
+                return Task.CompletedTask;
             
             var queries = new List<string>
             {
                 $"New-Item -Path \"{toggle.RegistryEntry}{toggle.RegistryPath}\" -Force | Out-Null",
                 $"New-ItemProperty -Path \"{toggle.RegistryEntry}{toggle.RegistryPath}\" -Name \"{toggle.Key}\" -Value {value.Value} -PropertyType DWORD -Force | Out-Null",
             };
-            await _powerShellService.RunScriptAsync(queries);
+            return _powerShellService.RunScriptAsync(queries);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace UtilityBox.App.Server.Services
 {
     public class WindowsAppService
     {
+        private const string WindowsPowerShellModule = "Import-Module -Name Appx -UseWindowsPowerShell";
         private readonly PowerShellService _shellService;
 
         // gotta manually initialize then because electron does not like "reflection"
@@ -21,6 +22,7 @@ namespace UtilityBox.App.Server.Services
             var list = new List<IWindowsApp>();
             var type = typeof(IWindowsApp);
             var types = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => a.FullName != null && a.FullName.ToLower().Contains("utilitybox"))
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p))
                 .Where(t => t.IsClass);
@@ -31,17 +33,17 @@ namespace UtilityBox.App.Server.Services
 
         public async Task<bool> IsAppInstalled(IWindowsApp app) 
             => (await _shellService.RunScriptAsync(
-                new List<string>()
+                new List<string>
                 {
-                    "Import-Module -Name Appx -UseWindowsPowerShell",
+                    WindowsPowerShellModule,
                     $"Get-AppxPackage *{app.Name}*"
                 })).IndexOf(app.Name, StringComparison.OrdinalIgnoreCase) >= 0;
 
         public async Task UninstallApp(IWindowsApp app)
             => await _shellService.RunScriptAsync(
-                new List<string>()
+                new List<string>
                 {
-                    "Import-Module -Name Appx -UseWindowsPowerShell",
+                    WindowsPowerShellModule,
                     $"Get-AppxPackage *{app.Name}* | Remove-AppxPackage"
                 });
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
@@ -16,15 +17,16 @@ namespace UtilityBox.App.Server.Services
             defaultSessionState.ExecutionPolicy = Microsoft.PowerShell.ExecutionPolicy.Unrestricted;
 
             _rsPool = RunspaceFactory.CreateRunspacePool(defaultSessionState);
-            _rsPool.SetMinRunspaces(1);
+            _rsPool.SetMinRunspaces(0);
+            _rsPool.CleanupInterval = TimeSpan.FromSeconds(5);
             _rsPool.ThreadOptions = PSThreadOptions.UseNewThread;
        
             // open the pool.
             _rsPool.Open();
         }
 
-        public async Task<string> RunScriptAsync(string script)
-            => await RunScriptAsync(new List<string>{ script });
+        public Task<string> RunScriptAsync(string script)
+            => RunScriptAsync(new List<string>{ script });
         
         public async Task<string> RunScriptAsync(List<string> scripts)
         {

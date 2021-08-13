@@ -4,7 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
-        <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+        <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
         <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
         <PublishSingleFile>true</PublishSingleFile>
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
@@ -38,7 +38,14 @@
 
     <ItemGroup>
       <PackageReference Include="DotNetify.SignalR" Version="5.1.0" />
+      <PackageReference Include="LibreHardwareMonitorLib" Version="0.8.8-pre21" />
       <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.4" />
       <PackageReference Include="System.Management" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Publish\web.config" />
+      <_ContentIncludedByDefault Remove="Publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="Publish\appsettings.json" />
     </ItemGroup>
 </Project>

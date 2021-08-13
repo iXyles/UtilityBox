@@ -28,7 +28,7 @@ namespace UtilityBox.App.Server.Models.ServiceToggles
 
         public async Task Disable(PowerShellService service)
         {
-            var result = await service.RunScriptAsync(new List<string>
+            await service.RunScriptAsync(new List<string>
             {
                 "Set-Service -Name SysMain -StartupType Disabled",
                 "Stop-Service -Name SysMain"

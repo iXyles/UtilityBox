@@ -15,27 +15,26 @@ namespace UtilityBox.App.Server
 {
     public class StartupApp
     {
-        private readonly Action<string> _action;
+        private readonly Action<string> _webServerAddressInvoker;
         readonly string UtilityBoxSpecificOriginsPolicy = "_utilityBoxOriginPolicy";
 
-        public StartupApp(Action<string> action)
+        public StartupApp(Action<string> webServerAddressInvoker)
         {
-            _action = action;
+            _webServerAddressInvoker = webServerAddressInvoker;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
-            {
                 options.AddPolicy(name: UtilityBoxSpecificOriginsPolicy,
                     builder =>
-                    {
                         builder.AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader();
-                    });
-            });
+                               .AllowAnyMethod()
+                               .AllowAnyHeader()));
+                        
+            // Hosted services
+            services.AddHostedServiceAndSingleton<HardwareMonitorHostService>();
             
             // Services
             services.AddSingleton<PowerShellService>();
@@ -81,7 +80,7 @@ namespace UtilityBox.App.Server
             var address = addressesFeature.Addresses.Any(x => x.StartsWith("http:"))
                 ? addressesFeature.Addresses.First(x => x.StartsWith("http:"))
                 : addressesFeature.Addresses.First();
-            _action?.Invoke(address);
+            _webServerAddressInvoker?.Invoke(address);
         }
     }
 }
