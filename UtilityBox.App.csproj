@@ -12,9 +12,14 @@
         <AssemblyOriginatorKeyFile />
         <Authors>Marcus Strandner</Authors>
         <PackageIcon>icon.ico</PackageIcon>
-        <Version>0.2.0</Version>
+        <Version>0.3.0</Version>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <PackageVersion>0.2.0</PackageVersion>
+        <PackageVersion>0.3.0</PackageVersion>
+        <Title>UtilityBox - Tool for windows</Title>
+        <PackageProjectUrl>https://ixyles.github.io/UtilityBox/</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/iXyles/UtilityBox/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/iXyles/UtilityBox</RepositoryUrl>
+        <RepositoryType>Public Open Source</RepositoryType>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
