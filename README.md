@@ -1,6 +1,6 @@
 [![Github All Releases](https://img.shields.io/github/downloads/iXyles/UtilityBox/total.svg)]()
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20iXyles)](https://twitter.com/iXyles)
-![GitHub issues open](https://img.shields.io/github/issues/iXyles/UtilityBox.svg?maxAge=2592000000)
+![GitHub issues open](https://img.shields.io/github/issues/iXyles/UtilityBox)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ixyles/Utilitybox)
 ![GitHub](https://img.shields.io/github/license/iXyles/UtilityBox)
 
