@@ -1,7 +1,7 @@
 ## Welcome to UtilityBox Application
 
 ### What is UtilityBox?
-UtilityBox is a follow-up by my previously abandon project known as "AutoFixer" which was a tool to simplify the process of a newly installed Windows 10 computer.
+UtilityBox is a follow-up by my previously abandon project known as "AutoFixer" which was a tool to simplify the process of a newly installed Windows 10/11 computer. 
 The idea behind the tool was to have a simple single program for myself to configure a newly installed Windows PC with some basics configurations; mainly due to so many issues in the early versions of Windows 10.
 
 ### So what makes UtilityBox different from AutoFixer?
@@ -18,6 +18,7 @@ Oh? Nice! Let me know by creating an issue on the GitHub repo, and I will try to
 
 ### Notes
 UtilityBox does not come with a built-in updater, which requires you to download the latest updates manually from the rep; by going to the "Release" tab and download the latest installer or standalone executable of your choice.
+Tested on windows 11 & should work just fine, as it is based on Windows 10.
 
 ### Looking for the old version of the "UtilityBox" program?
 I am no longer supporting the old version of the tool, but if you really want it you can download it here: https://github.com/iXyles/UtilityBox/releases/tag/Old 
