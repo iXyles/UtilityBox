@@ -32,8 +32,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetify.SignalR" Version="4.1.1" />
-      <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.2" />
+      <PackageReference Include="DotNetify.SignalR" Version="5.1.0" />
+      <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.4" />
       <PackageReference Include="System.Management" Version="5.0.0" />
     </ItemGroup>
 </Project>

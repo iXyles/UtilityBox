@@ -108,12 +108,10 @@ export default {
   },
   methods: {
     toggle(item) {
-      this.vm.$dispatch({
-        Toggle: item.Name
-      });
+      this.vm.$dispatch({ Toggle: item.Name });
     },
     refresh(){
-      this.vm.$dispatch({RefreshServices:null});
+      this.vm.$dispatch({ RefreshServices:null });
     }
   },
   computed: {

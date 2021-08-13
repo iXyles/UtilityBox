@@ -124,12 +124,10 @@ export default {
       this.currentDialogItem = item;
     },
     uninstall() {
-      this.vm.$dispatch({
-        UninstallApp: this.currentDialogItem.Name
-      });
+      this.vm.$dispatch({ UninstallApp: this.currentDialogItem.Name });
     },
     refresh(){
-      this.vm.$dispatch({RefreshApps:null});
+      this.vm.$dispatch({ RefreshApps:null });
     }
   },
   computed: {

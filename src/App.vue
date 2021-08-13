@@ -19,9 +19,6 @@
         </template>
 
         <v-list dense>
-          <v-list-item @click="reload">
-            <v-list-item-title>Reload</v-list-item-title>
-          </v-list-item>
           <v-list-item @click="exit">
             <v-list-item-title>Exit</v-list-item-title>
           </v-list-item>
@@ -38,6 +35,7 @@
 </template>
 
 <script>
+import dotnetify from 'dotnetify/vue';
 import { FadeTransition } from 'vue2-transitions';
 import AppNavigator from './components/AppNavigator';
 
@@ -46,22 +44,26 @@ export default {
     FadeTransition,
     AppNavigator
   },
+  created() {
+    this.vm = dotnetify.vue.connect("App", this);
+  },
   mounted() {
     const theme = localStorage.getItem('darkMode');
     this.$vuetify.theme.dark = theme && theme === 'false' ? false : true;
   },
   methods: {
     exit() {
-      // exit
-    },
-    reload() {
-      // force reload
+      this.vm.$dispatch({ Exit: true });
+      window.close();
     }
   },
   computed: {
     scrollbarTheme() {
       return this.$vuetify.theme.dark ? 'darkscroll' : 'lightscroll';
     }
+  },
+  destroyed() {
+    this.vm.$destroy();
   }
 };
 </script>

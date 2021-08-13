@@ -19,8 +19,9 @@
 
 <script>
 import dotnetify from 'dotnetify/vue';
-import Chart from 'chart.js';
-import '@taeuk-gang/chartjs-plugin-streaming';
+import Chart from 'chart.js/auto';
+import 'chartjs-adapter-luxon';
+import ChartStreaming from 'chartjs-plugin-streaming';
 
 export default {
   name: 'SystemUsage',
@@ -28,6 +29,7 @@ export default {
     this.vm = dotnetify.vue.connect("SystemUsage", this);
   },
   mounted() {
+    Chart.register(ChartStreaming);
     this.lineChart = this.createLineChart(document.getElementById("usageGraph"));
   },
   data() {
@@ -47,7 +49,7 @@ export default {
           labels: [],
           datasets: [{
             label: 'CPU Usage %',
-            backgroundColor: Chart.helpers.color('rgb(255, 99, 132)').alpha(0.5).rgbString(),
+            backgroundColor: 'rgb(255, 99, 132, 0.5)',
             borderColor: 'rgb(255, 99, 132)',
             fill: false,
             cubicInterpolationMode: 'monotone',
@@ -56,7 +58,7 @@ export default {
           },
           {
             label: 'Memory Usage %',
-            backgroundColor: Chart.helpers.color('rgb(54, 162, 235)').alpha(0.5).rgbString(),
+            backgroundColor: 'rgb(54, 162, 235, 0.5)',
             borderColor: 'rgb(54, 162, 235)',
             fill: false,
             cubicInterpolationMode: 'monotone',
@@ -69,8 +71,7 @@ export default {
             text: 'System usage graphs'
           },
           scales: {
-            xAxes: [
-              {
+            x: {
                 type: 'realtime',
                 realtime: {
                   duration: 60000,
@@ -78,14 +79,13 @@ export default {
                   delay: 2000,
                   onRefresh: this.onRefresh.bind(this)
                 }
-              }
-            ],
-            yAxes: [{
+              },
+            y: {
               scaleLabel: {
                 display: true,
                 labelString: 'value'
               }
-            }]
+            }
           },
           tooltips: {
             mode: 'nearest',

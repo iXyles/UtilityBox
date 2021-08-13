@@ -103,12 +103,10 @@ export default {
   },
   methods: {
     toggle(item) {
-      this.vm.$dispatch({
-        Toggle: item.Name
-      });
+      this.vm.$dispatch({ Toggle: item.Name });
     },
     refresh(){
-      this.vm.$dispatch({RefreshRegistryKeys:null});
+      this.vm.$dispatch({ RefreshRegistryKeys:null });
     }
   },
   computed: {

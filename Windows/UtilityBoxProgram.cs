@@ -18,7 +18,7 @@ namespace UtilityBox.App.Windows
         [STAThread]
         static void Main()
         {
-            using Mutex mutex = new Mutex(false, "Global\\" + UtilityBoxApplicationGuid);
+            using var mutex = new Mutex(false, "Global\\" + UtilityBoxApplicationGuid);
             if (!mutex.WaitOne(0, false))
             {
                 MessageBox.Show("Instance already running, please close it if you are trying to restart it.");
