@@ -2,10 +2,14 @@
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
     <assemblyIdentity version="1.0.0.0" name="UtilityBox.App.app"/>
     <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
-        <security>
-            <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-                <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
-            </requestedPrivileges>
-        </security>
+      <security>
+        <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+          <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+        </requestedPrivileges>
+        <applicationRequestMinimum>
+          <defaultAssemblyRequest permissionSetReference="Custom" />
+          <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" />
+        </applicationRequestMinimum>
+      </security>
     </trustInfo>
 </assembly>

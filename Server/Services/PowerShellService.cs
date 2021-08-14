@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace UtilityBox.App.Server.Services
 {
+    /**
+     * Everything that has to do with powershell currently has a known memory leak and
+     * the issue is coming from Microsofts SDK all together, which makes it impossible for me
+     * to do any changes to resolve those memory leaks for now. (Awaiting fixes & .NET 6 to resolve those)
+     */
     public class PowerShellService
     {
         private readonly RunspacePool _rsPool;

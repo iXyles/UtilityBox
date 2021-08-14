@@ -20,6 +20,7 @@
         <PackageLicenseUrl>https://github.com/iXyles/UtilityBox/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/iXyles/UtilityBox</RepositoryUrl>
         <RepositoryType>Public Open Source</RepositoryType>
+        <ApplicationIcon>icon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
