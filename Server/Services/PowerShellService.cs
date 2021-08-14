@@ -35,6 +35,7 @@ namespace UtilityBox.App.Server.Services
 
             // specify the script code to run.
             scripts.ForEach(s => ps.AddScript(s));
+            ps.AddScript("[GC]::Collect()");
 
             // execute the script and await the result.
             var results = await ps.InvokeAsync().ConfigureAwait(false);
